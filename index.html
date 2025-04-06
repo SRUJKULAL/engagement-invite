@@ -2,134 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yashaswi & Ranjith Engagement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yashaswi & Ranjith - Engagement Invite</title>
 
-  <!-- Open Graph tags for social media sharing -->
+  <!-- Open Graph meta tags -->
   <meta property="og:title" content="Yashaswi & Ranjith Engagement" />
   <meta property="og:description" content="Join us on May 1, 2025, at 12:40 PM!" />
-  <meta property="og:image" content="https://srujkulal.github.io/engagement-invite/thumbnail.jpg" />
+  <meta property="og:image" content="https://i.imgur.com/0CjnKPY.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1080" />
   <meta property="og:image:height" content="1920" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://srujkulal.github.io/engagement-invite/" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      background-color: #4a1d2e;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      box-sizing: border-box;
     }
-
-    .container {
-      position: relative;
+    body, html {
       width: 100%;
-      max-width: 1080px;
-      aspect-ratio: 9 / 16;
+      height: 100%;
       overflow: hidden;
+      background-color: black;
     }
-
-    video {
+    #video {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-    #timer {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      color: #FFD700;
-      font-family: Arial, sans-serif;
-      font-size: 20px;
-      background-color: #2c0d1a;
-      padding: 5px 10px;
-      border-radius: 5px;
-      z-index: 10;
-    }
-
-    .map-link {
+    #music-icon {
       position: absolute;
       bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-decoration: none;
-      color: #FFD700;
-      font-size: 24px;
+      right: 20px;
       z-index: 10;
-    }
-
-    .map-link:hover {
-      color: #FFFFFF;
-    }
-
-    audio {
-      display: none;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <video id="inviteVideo" autoplay muted playsinline>
-      <source src="https://drive.google.com/uc?export=download&id=1LHxWIN9bzPHnukB53MdplXyI6DCblkqz" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
 
-    <div id="timer"></div>
+  <!-- Video -->
+  <video id="video" autoplay muted playsinline>
+    <source src="your-video.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
-    <a href="https://maps.app.goo.gl/rv9pDW3tj69biWkf8?g_st=aw" target="_blank" class="map-link">
-      <i class="fas fa-map-marker-alt"></i>
-    </a>
+  <!-- Music icon -->
+  <img id="music-icon" src="music-icon.png" alt="Music Icon" />
 
-    <audio id="bgMusic" loop>
-      <source src="https://srujkulal.github.io/engagement-invite/music.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-  </div>
+  <!-- Background music -->
+  <audio id="bg-music" src="your-music.mp3" loop></audio>
 
   <script>
-    // Countdown timer
-    function updateTimer() {
-      const countDownDate = new Date("May 1, 2025 12:40:00").getTime();
-      const now = new Date().getTime();
-      const distance = countDownDate - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      const timerEl = document.getElementById("timer");
-      if (distance < 0) {
-        timerEl.innerHTML = "Event Started!";
+    const musicIcon = document.getElementById("music-icon");
+    const bgMusic = document.getElementById("bg-music");
+    const video = document.getElementById("video");
+
+    let isMusicPlaying = false;
+
+    musicIcon.addEventListener("click", () => {
+      if (!isMusicPlaying) {
+        bgMusic.play();
+        isMusicPlaying = true;
       } else {
-        timerEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        bgMusic.pause();
+        isMusicPlaying = false;
       }
-    }
-    setInterval(updateTimer, 1000);
+    });
 
-    // Play background music on first interaction
-    const bgMusic = document.getElementById("bgMusic");
-    let musicStarted = false;
-
-    function startMusic() {
-      if (!musicStarted) {
-        bgMusic.play().catch(e => {
-          console.log("Autoplay failed:", e);
-        });
-        musicStarted = true;
+    // Ensure video plays on mobile tap
+    document.body.addEventListener("click", () => {
+      if (video.paused) {
+        video.play().catch(() => {});
       }
-    }
-
-    // First click or touch anywhere starts music
-    document.addEventListener("click", startMusic, { once: true });
-    document.addEventListener("touchstart", startMusic, { once: true });
+    });
   </script>
+
 </body>
 </html>
