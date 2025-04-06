@@ -114,12 +114,16 @@
     const playMusicBtn = document.getElementById('playMusicBtn');
     const bgMusic = document.getElementById('bgMusic');
 
-    playMusicBtn.addEventListener('click', () => {
+    // Play music on first user interaction anywhere
+    function playMusicOnce() {
       if (bgMusic.paused) {
         bgMusic.play();
-        playMusicBtn.style.display = "none"; // Hide button once music starts
+        playMusicBtn.style.display = "none"; // Hide button
+        document.body.removeEventListener('click', playMusicOnce); // Only once
       }
-    });
+    }
+
+    document.body.addEventListener('click', playMusicOnce);
 
     // Timer countdown
     function updateTimer() {
