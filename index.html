@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yashaswi & Ranjith Engagement</title>
 
-  <!-- Open Graph tags for WhatsApp preview -->
+  <!-- Open Graph for link preview -->
   <meta property="og:title" content="Yashaswi & Ranjith Engagement">
   <meta property="og:description" content="Join us on May 1, 2025, at 12:40 PM!">
-  <meta property="og:image" content="https://SRUJKULAL.github.io/engagement-invite/thumbnail.jpg">
-  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image" content="https://srujkulal.github.io/engagement-invite/thumbnail.jpg">
+  <meta property="og:type" content="website">
   <meta property="og:image:width" content="1080">
   <meta property="og:image:height" content="1920">
-  <meta property="og:type" content="website">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
   <style>
     body {
@@ -39,6 +38,7 @@
     video {
       width: 100%;
       height: auto;
+      object-fit: cover;
     }
 
     #timer {
@@ -65,7 +65,7 @@
     }
 
     .map-link:hover {
-      color: #FFFFFF;
+      color: #ffffff;
     }
 
     .mute-toggle {
@@ -90,8 +90,8 @@
 <body>
   <div class="container">
     <video id="engagementVideo" autoplay muted playsinline>
-      <source src="https://drive.google.com/uc?export=download&id=1LHxWIN9bzPHnukB53MdplXyI6DCblkqz" type="video/mp4">
-      <p>Your browser does not support the video tag. <a href="https://drive.google.com/uc?export=download&id=1LHxWIN9bzPHnukB53MdplXyI6DCblkqz">Download the video</a>.</p>
+      <source src="https://srujkulal.github.io/engagement-invite/Yashaswi_eng.mp4" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
 
     <div id="timer"></div>
@@ -106,28 +106,45 @@
   </div>
 
   <script>
-    const video = document.getElementById('engagementVideo');
-    const muteBtn = document.getElementById('muteBtn');
-    const muteIcon = muteBtn.querySelector('i');
+    const video = document.getElementById("engagementVideo");
+    const muteBtn = document.getElementById("muteBtn");
+    const muteIcon = muteBtn.querySelector("i");
 
-    muteBtn.addEventListener('click', () => {
+    // Ensure autoplay starts on some browsers
+    window.addEventListener("load", () => {
+      video.play().catch((err) => {
+        console.warn("Autoplay prevented:", err);
+      });
+    });
+
+    muteBtn.addEventListener("click", () => {
       video.muted = !video.muted;
-      muteIcon.className = video.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+      if (!video.muted) {
+        video.play(); // re-trigger play in case autoplay was paused
+      }
+      muteIcon.className = video.muted ? "fas fa-volume-mute" : "fas fa-volume-up";
     });
 
     function updateTimer() {
       const countDownDate = new Date("May 1, 2025 12:40:00").getTime();
       const now = new Date().getTime();
       const distance = countDownDate - now;
+
+      if (distance < 0) {
+        document.getElementById("timer").innerHTML = "Event Started!";
+        return;
+      }
+
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-      if (distance < 0) {
-        document.getElementById("timer").innerHTML = "Event Started!";
-      }
+
+      document.getElementById("timer").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
+
+    updateTimer();
     setInterval(updateTimer, 1000);
   </script>
 </body>
