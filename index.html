@@ -53,15 +53,19 @@
       z-index: 10;
     }
 
-    .map-link {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 22px;
-      color: #FFD700;
-      text-decoration: none;
-    }
+.map-link {
+  position: absolute;
+  top: 74%; /* Adjust this % if needed based on your video frame */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  color: #FFD700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 
     .map-link:hover {
       color: white;
