@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yashaswi & Ranjith Engagement</title>
 
-  <!-- Open Graph tags for social media sharing -->
+  <!-- Open Graph for link preview -->
   <meta property="og:title" content="Yashaswi & Ranjith Engagement" />
   <meta property="og:description" content="Join us on May 1, 2025, at 12:40 PM!" />
   <meta property="og:image" content="https://srujkulal.github.io/engagement-invite/thumbnail.jpg" />
@@ -72,7 +72,12 @@
     }
 
     audio {
-      display: none;
+      display: none !important;
+      visibility: hidden;
+      height: 0;
+      width: 0;
+      opacity: 0;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -85,18 +90,18 @@
 
     <div id="timer"></div>
 
-    <a href="https://goo.gl/maps/UZKAnvSUfA4Cz1jw6" target="_blank" class="map-link">
+    <!-- ✅ Updated map link here -->
+    <a href="https://maps.app.goo.gl/rv9pDW3tj69biWkf8?g_st=aw" target="_blank" class="map-link">
       <i class="fas fa-map-marker-alt"></i>
     </a>
 
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop preload="auto">
       <source src="https://srujkulal.github.io/engagement-invite/music.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
     </audio>
   </div>
 
   <script>
-    // Countdown timer
+    // Countdown
     function updateTimer() {
       const countDownDate = new Date("May 1, 2025 12:40:00").getTime();
       const now = new Date().getTime();
@@ -106,6 +111,7 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
       const timerEl = document.getElementById("timer");
+
       if (distance < 0) {
         timerEl.innerHTML = "Event Started!";
       } else {
@@ -113,23 +119,21 @@
       }
     }
     setInterval(updateTimer, 1000);
+    updateTimer();
 
-    // Play background music on first interaction
-    const bgMusic = document.getElementById("bgMusic");
-    let musicStarted = false;
+    // Background Music — first user interaction
+    const music = document.getElementById('bgMusic');
+    let hasPlayed = false;
 
     function startMusic() {
-      if (!musicStarted) {
-        bgMusic.play().catch(e => {
-          console.log("Autoplay failed:", e);
-        });
-        musicStarted = true;
+      if (!hasPlayed) {
+        music.play().catch(err => console.log("Playback error:", err));
+        hasPlayed = true;
       }
     }
 
-    // First click or touch anywhere starts music
-    document.addEventListener("click", startMusic, { once: true });
-    document.addEventListener("touchstart", startMusic, { once: true });
+    window.addEventListener('click', startMusic, { once: true });
+    window.addEventListener('touchstart', startMusic, { once: true });
   </script>
 </body>
 </html>
