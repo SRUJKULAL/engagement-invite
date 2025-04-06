@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yashaswi & Ranjith Engagement</title>
 
-  <!-- Open Graph for link preview -->
-  <meta property="og:title" content="Yashaswi & Ranjith Engagement">
-  <meta property="og:description" content="Join us on May 1, 2025, at 12:40 PM!">
-  <meta property="og:image" content="https://srujkulal.github.io/engagement-invite/thumbnail.jpg">
-  <meta property="og:type" content="website">
-  <meta property="og:image:width" content="1080">
-  <meta property="og:image:height" content="1920">
+  <!-- Social media preview -->
+  <meta property="og:title" content="Yashaswi & Ranjith Engagement" />
+  <meta property="og:description" content="Join us on May 1, 2025, at 12:40 PM!" />
+  <meta property="og:image" content="https://srujkulal.github.io/engagement-invite/thumbnail.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://srujkulal.github.io/engagement-invite/" />
+
+  <title>Yashaswi & Ranjith Engagement</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
   <style>
     body {
       margin: 0;
-      padding: 0;
+      background-color: #4a1d2e;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      background-color: #4a1d2e;
+      height: 100vh;
       overflow: hidden;
     }
 
@@ -37,7 +36,7 @@
 
     video {
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
     }
 
@@ -46,11 +45,11 @@
       top: 20px;
       left: 20px;
       color: #FFD700;
+      background: #2c0d1a;
+      padding: 6px 12px;
+      border-radius: 6px;
       font-family: Arial, sans-serif;
-      font-size: 20px;
-      background-color: #2c0d1a;
-      padding: 5px 10px;
-      border-radius: 5px;
+      font-size: 18px;
       z-index: 10;
     }
 
@@ -59,20 +58,20 @@
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      text-decoration: none;
+      font-size: 22px;
       color: #FFD700;
-      font-size: 24px;
+      text-decoration: none;
     }
 
     .map-link:hover {
-      color: #ffffff;
+      color: white;
     }
 
-    .mute-toggle {
+    .music-play-btn {
       position: absolute;
       bottom: 20px;
       right: 20px;
-      background-color: rgba(44, 13, 26, 0.8);
+      background: rgba(44, 13, 26, 0.8);
       color: #FFD700;
       border: none;
       padding: 10px;
@@ -82,49 +81,47 @@
       z-index: 10;
     }
 
-    .mute-toggle:hover {
-      color: #fff;
+    .music-play-btn:hover {
+      color: white;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <video id="engagementVideo" autoplay muted playsinline>
-      <source src="https://srujkulal.github.io/engagement-invite/Yashaswi_eng.mp4" type="video/mp4">
+    <video id="engagementVideo" autoplay muted loop playsinline>
+      <source src="https://srujkulal.github.io/engagement-invite/Yashaswi_eng.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
 
     <div id="timer"></div>
 
-    <a href="https://goo.gl/maps/UZKAnvSUfA4Cz1jw6" target="_blank" class="map-link">
+    <a class="map-link" href="https://goo.gl/maps/UZKAnvSUfA4Cz1jw6" target="_blank">
       <i class="fas fa-map-marker-alt"></i>
     </a>
 
-    <button class="mute-toggle" id="muteBtn">
-      <i class="fas fa-volume-mute"></i>
+    <button class="music-play-btn" id="playMusicBtn">
+      <i class="fas fa-music"></i>
     </button>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+      <source src="https://srujkulal.github.io/engagement-invite/music.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
   </div>
 
   <script>
-    const video = document.getElementById("engagementVideo");
-    const muteBtn = document.getElementById("muteBtn");
-    const muteIcon = muteBtn.querySelector("i");
+    const playMusicBtn = document.getElementById('playMusicBtn');
+    const bgMusic = document.getElementById('bgMusic');
 
-    // Ensure autoplay starts on some browsers
-    window.addEventListener("load", () => {
-      video.play().catch((err) => {
-        console.warn("Autoplay prevented:", err);
-      });
-    });
-
-    muteBtn.addEventListener("click", () => {
-      video.muted = !video.muted;
-      if (!video.muted) {
-        video.play(); // re-trigger play in case autoplay was paused
+    playMusicBtn.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        playMusicBtn.style.display = "none"; // Hide button once music starts
       }
-      muteIcon.className = video.muted ? "fas fa-volume-mute" : "fas fa-volume-up";
     });
 
+    // Timer countdown
     function updateTimer() {
       const countDownDate = new Date("May 1, 2025 12:40:00").getTime();
       const now = new Date().getTime();
