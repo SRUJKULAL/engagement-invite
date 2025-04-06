@@ -53,19 +53,33 @@
       z-index: 10;
     }
 
-.map-link {
-  position: absolute;
-  top: 58%; /* <-- Adjusted from 74% to 58% */
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 22px;
-  color: #FFD700;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  z-index: 10;
-}
+    .map-wrapper {
+      position: absolute;
+      top: 68%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .location-text {
+      font-size: 16px;
+      color: #FFD700;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    .map-link {
+      font-size: 24px;
+      color: #FFD700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 0.3s ease;
+    }
 
     .map-link:hover {
       color: white;
@@ -99,15 +113,21 @@
 
     <div id="timer"></div>
 
-    <a class="map-link" href="https://maps.app.goo.gl/rv9pDW3tj69biWkf8?g_st=aw" target="_blank">
-      <i class="fas fa-map-marker-alt"></i>
-    </a>
+    <!-- Location block -->
+    <div class="map-wrapper">
+      <div class="location-text">
+        Laxmi Nivasa,<br>
+        Near Panchayath Office, Kulai
+      </div>
+      <a class="map-link" href="https://maps.app.goo.gl/rv9pDW3tj69biWkf8?g_st=aw" target="_blank">
+        <i class="fas fa-map-marker-alt"></i>
+      </a>
+    </div>
 
     <button class="music-play-btn" id="playMusicBtn">
       <i class="fas fa-music"></i>
     </button>
 
-    <!-- Background Music -->
     <audio id="bgMusic" loop>
       <source src="https://srujkulal.github.io/engagement-invite/music.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
@@ -118,18 +138,16 @@
     const playMusicBtn = document.getElementById('playMusicBtn');
     const bgMusic = document.getElementById('bgMusic');
 
-    // Play music on first user interaction anywhere
     function playMusicOnce() {
       if (bgMusic.paused) {
         bgMusic.play();
-        playMusicBtn.style.display = "none"; // Hide button
-        document.body.removeEventListener('click', playMusicOnce); // Only once
+        playMusicBtn.style.display = "none";
+        document.body.removeEventListener('click', playMusicOnce);
       }
     }
 
     document.body.addEventListener('click', playMusicOnce);
 
-    // Timer countdown
     function updateTimer() {
       const countDownDate = new Date("May 1, 2025 12:40:00").getTime();
       const now = new Date().getTime();
