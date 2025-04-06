@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Open Graph tags for WhatsApp preview -->
+  
+  <!-- Open Graph for link preview -->
   <meta property="og:title" content="Yashaswi & Ranjith Engagement">
   <meta property="og:description" content="Join us on May 1, 2025, at 12:40 PM!">
-  <meta property="og:image" content="https://SRUJKULAL.github.io/engagement-invite/thumbnail.jpg"> <!-- Update with Imgur if needed -->
+  <meta property="og:image" content="https://srujkulal.github.io/engagement-invite/thumbnail.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1080">
   <meta property="og:image:height" content="1920">
-  <meta property="og:type" content="video.other">
-  <meta property="og:video" content="https://drive.google.com/uc?export=download&id=1LHxWIN9bzPHnukB53MdplXyI6DCblkqz">
-  <meta property="og:video:secure_url" content="https://drive.google.com/uc?export=download&id=1LHxWIN9bzPHnukB53MdplXyI6DCblkqz">
-  <meta property="og:video:type" content="video/mp4">
-  <meta property="og:video:width" content="1080">
-  <meta property="og:video:height" content="1920">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta property="og:url" content="https://srujkulal.github.io/engagement-invite/">
+  <meta property="og:type" content="website">
+
+  <title>Yashaswi & Ranjith Engagement</title>
+
   <style>
     body {
       margin: 0;
@@ -25,29 +24,29 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background-color: #4a1d2e; /* Dark red to match your vibe */
+      background-color: #4a1d2e;
       overflow: hidden;
     }
     .container {
       position: relative;
       width: 100%;
-      max-width: 1080px; /* Matches 9:16 at 1080x1920 */
+      max-width: 1080px;
       aspect-ratio: 9 / 16;
       overflow: hidden;
     }
     video {
       width: 100%;
-      height: auto;
-      autoplay muted playsinline
+      height: 100%;
+      object-fit: cover;
     }
     #timer {
       position: absolute;
       top: 20px;
       left: 20px;
-      color: #FFD700; /* Golden color */
+      color: #FFD700;
       font-family: Arial, sans-serif;
       font-size: 20px;
-      background-color: #2c0d1a; /* Dark maroon background */
+      background-color: #2c0d1a;
       padding: 5px 10px;
       border-radius: 5px;
       z-index: 10;
@@ -58,23 +57,23 @@
       left: 50%;
       transform: translateX(-50%);
       text-decoration: none;
-      color: #FFD700; /* Golden color */
+      color: #FFD700;
       font-size: 24px;
     }
     .map-link:hover {
-      color: #FFFFFF; /* White on hover */
+      color: #FFFFFF;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <video>
-      <source src="https://drive.google.com/uc?export=download&id=1LHxWIN9bzPHnukB53MdplXyI6DCblkqz" type="video/mp4">
-      <p>Your browser does not support the video tag. <a href="https://drive.google.com/uc?export=download&id=1LHxWIN9bzPHnukB53MdplXyI6DCblkqz">Download the video</a>.</p>
+    <video autoplay muted playsinline>
+      <source src="https://srujkulal.github.io/engagement-invite/Yashaswi_eng.mp4" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
     <div id="timer"></div>
     <a href="https://goo.gl/maps/UZKAnvSUfA4Cz1jw6" target="_blank" class="map-link">
-      <i class="fas fa-map-marker-alt"></i>
+      📍
     </a>
   </div>
 
@@ -83,15 +82,22 @@
       const countDownDate = new Date("May 1, 2025 12:40:00").getTime();
       const now = new Date().getTime();
       const distance = countDownDate - now;
+
+      if (distance < 0) {
+        document.getElementById("timer").innerHTML = "Event Started!";
+        return;
+      }
+
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-      if (distance < 0) {
-        document.getElementById("timer").innerHTML = "Event Started!";
-      }
+
+      document.getElementById("timer").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
+
+    updateTimer();
     setInterval(updateTimer, 1000);
   </script>
 </body>
