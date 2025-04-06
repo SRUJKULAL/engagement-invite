@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Yashaswi & Ranjith - Engagement Invite</title>
 
-  <!-- Open Graph meta tags -->
+  <!-- Open Graph meta tags for link previews -->
   <meta property="og:title" content="Yashaswi & Ranjith Engagement" />
   <meta property="og:description" content="Join us on May 1, 2025, at 12:40 PM!" />
   <meta property="og:image" content="https://i.imgur.com/0CjnKPY.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1080" />
-  <meta property="og:image:height" content="1920" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://srujkulal.github.io/engagement-invite/" />
 
@@ -21,11 +18,10 @@
       padding: 0;
       box-sizing: border-box;
     }
-    body, html {
-      width: 100%;
+    html, body {
       height: 100%;
       overflow: hidden;
-      background-color: black;
+      background: black;
     }
     #video {
       width: 100%;
@@ -36,9 +32,9 @@
       position: absolute;
       bottom: 20px;
       right: 20px;
-      z-index: 10;
       width: 50px;
       height: 50px;
+      z-index: 10;
       cursor: pointer;
     }
   </style>
@@ -51,10 +47,10 @@
     Your browser does not support the video tag.
   </video>
 
-  <!-- Music icon -->
-  <img id="music-icon" src="music-icon.png" alt="Music Icon" />
+  <!-- Music Icon (from Imgur) -->
+  <img id="music-icon" src="https://i.imgur.com/8n7Z3Kj.png" alt="Music Icon" />
 
-  <!-- Background music -->
+  <!-- Background Music -->
   <audio id="bg-music" src="your-music.mp3" loop></audio>
 
   <script>
@@ -62,19 +58,19 @@
     const bgMusic = document.getElementById("bg-music");
     const video = document.getElementById("video");
 
-    let isMusicPlaying = false;
+    let isPlaying = false;
 
     musicIcon.addEventListener("click", () => {
-      if (!isMusicPlaying) {
+      if (!isPlaying) {
         bgMusic.play();
-        isMusicPlaying = true;
+        isPlaying = true;
       } else {
         bgMusic.pause();
-        isMusicPlaying = false;
+        isPlaying = false;
       }
     });
 
-    // Ensure video plays on mobile tap
+    // Ensure video plays on mobile when user taps anywhere
     document.body.addEventListener("click", () => {
       if (video.paused) {
         video.play().catch(() => {});
