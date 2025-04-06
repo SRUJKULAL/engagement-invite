@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Open Graph tags for WhatsApp preview -->
+  <meta property="og:title" content="Yashaswi & Ranjith Engagement">
+  <meta property="og:description" content="Join us on May 1, 2025, at 12:40 PM!">
+  <meta property="og:image" content="https://SRUJKULAL.github.io/engagement-invite/thumbnail.jpg">
+  <meta property="og:type" content="video.other">
+  <meta property="og:video" content="https://SRUJKULAL.github.io/engagement-invite/Yashaswi_eng.mp4">
+  <meta property="og:video:secure_url" content="https://SRUJKULAL.github.io/engagement-invite/Yashaswi_eng.mp4">
+  <meta property="og:video:type" content="video/mp4">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #4a1d2e; /* Dark red to match your vibe */
+      overflow: hidden;
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 1080px; /* Matches 9:16 at 1080x1920 */
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+    }
+    video {
+      width: 100%;
+      height: auto;
+    }
+    #timer {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #FFD700; /* Golden color */
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .map-link {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-decoration: none;
+      color: #FFD700; /* Golden color */
+      font-size: 24px;
+    }
+    .map-link:hover {
+      color: #FFFFFF; /* White on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <video controls>
+      <source src="Yashaswi_eng.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div id="timer"></div>
+    <a href="https://goo.gl/maps/UZKAnvSUfA4Cz1jw6" target="_blank" class="map-link">
+      <i class="fas fa-map-marker-alt"></i>
+    </a>
+  </div>
+
+  <script>
+    function updateTimer() {
+      const countDownDate = new Date("May 1, 2025 12:40:00").getTime();
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+      if (distance < 0) {
+        document.getElementById("timer").innerHTML = "Event Started!";
+      }
+    }
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
