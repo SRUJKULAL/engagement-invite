@@ -147,11 +147,11 @@
       if (bgMusic.paused) {
         bgMusic.play();
         playMusicBtn.style.display = "none";
-        document.body.removeEventListener('pointerdown', playMusicOnce);
+        document.body.removeEventListener('click', playMusicOnce);
       }
     }
 
-    document.body.addEventListener('pointerdown', playMusicOnce);
+    document.body.addEventListener('click', playMusicOnce);
 
     function updateTimer() {
       const countDownDate = new Date("May 1, 2025 12:40:00").getTime();
