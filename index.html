@@ -40,7 +40,6 @@
       object-fit: cover;
     }
 
-    /* Fade-in animation */
     .fade-in {
       opacity: 0;
       animation: fadeIn 1.2s ease-in-out forwards;
@@ -53,19 +52,21 @@
       }
     }
 
-    #timer {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      color: #FFD700;
-      background: #2c0d1a;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      z-index: 10;
-      box-shadow: 0 0 12px #FFD700;
-    }
+   #timer {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #FFD700;
+  background: #2c0d1a;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  z-index: 10;
+  box-shadow: 0 0 12px #FFD700;
+  /* Removed cursor and hover styles for a non-clickable look */
+}
+
 
     .map-wrapper {
       position: absolute;
@@ -118,22 +119,22 @@
       Your browser does not support the video tag.
     </video>
 
-    <!-- 👇 Fade-in added -->
-    <a id="timer" class="fade-in" target="_blank"></a>
+    <!-- Timer Box (clickable) -->
+    <div id="timer" class="fade-in" onclick="handleCalendarClick()" title="Click to add to calendar"></div>
 
-
-    <!-- 👇 Fade-in added -->
+    <!-- Map Link -->
     <div class="map-wrapper fade-in">
       <a class="map-link" href="https://maps.app.goo.gl/rv9pDW3tj69biWkf8?g_st=aw" target="_blank">
         <i class="fas fa-map-marker-alt"></i>
       </a>
     </div>
 
-    <!-- 👇 Fade-in added -->
+    <!-- Music Play Button -->
     <button class="music-play-btn fade-in" id="playMusicBtn">
       <i class="fas fa-music"></i>
     </button>
 
+    <!-- Music -->
     <audio id="bgMusic" loop>
       <source src="https://srujkulal.github.io/engagement-invite/music.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
@@ -176,10 +177,19 @@
     updateTimer();
     setInterval(updateTimer, 1000);
 
-    // 👇 Add calendar link to timer
-    const timer = document.getElementById('timer');
-    const calendarLink ='https://calendar.google.com/calendar/render?action=TEMPLATE&text=Yashaswi+%26+Ranjith+Engagement&dates=20250501T071000Z/20250501T090000Z&details=Join+us+on+May+1+at+12:40+PM!&location=https://maps.app.goo.gl/rv9pDW3tj69biWkf8?g_st=aw';
-    timer.setAttribute('href', calendarLink);
+    function handleCalendarClick() {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const isAndroid = /Android/.test(navigator.userAgent);
+
+      if (isIOS) {
+        // iOS - download .ics file
+        window.location.href = "https://srujkulal.github.io/engagement-invite/yashaswi_ranjith_engagement.ics";
+      } else {
+        // Google Calendar
+        const googleCalendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Yashaswi+%26+Ranjith+Engagement&dates=20250501T071000Z/20250501T083000Z&details=Join+us+on+May+1,+2025,+at+12:40+PM!&location=Kaikamba,+Mangalore,+Karnataka,+India&sf=true&output=xml";
+        window.open(googleCalendarUrl, "_blank");
+      }
+    }
   </script>
 </body>
 </html>
