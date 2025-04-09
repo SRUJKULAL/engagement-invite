@@ -40,44 +40,57 @@
       object-fit: cover;
     }
 
-   
- #timer {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  color: #FFD700;
-  background: #2c0d1a;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-family: Arial, sans-serif;
-  font-size: 18px;
-  z-index: 10;
-  box-shadow: 0 0 12px #FFD700; /* 💡 Glow added */
-}
-  .map-wrapper {
-    position: absolute;
-    top: 79.5%;
-    left: 62%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-  }
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 1s;
+    }
 
- .map-link {
-  font-size: 17px;
-  color: #FFD700;
-  text-decoration: none;
-  padding: 8px;
-  border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s ease, color 0.3s ease;
-  box-shadow: 0 0 12px #FFD700; /* 💡 Glow added */
-}
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
 
-  .map-link:hover {
-    color: white;
-    background-color: rgba(255, 215, 0, 0.2);
-    transform: scale(1.2);
-  }
+    #timer {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #FFD700;
+      background: #2c0d1a;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      z-index: 10;
+      box-shadow: 0 0 12px #FFD700;
+    }
+
+    .map-wrapper {
+      position: absolute;
+      top: 79.5%;
+      left: 62%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    .map-link {
+      font-size: 17px;
+      color: #FFD700;
+      text-decoration: none;
+      padding: 8px;
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, color 0.3s ease;
+      box-shadow: 0 0 12px #FFD700;
+    }
+
+    .map-link:hover {
+      color: white;
+      background-color: rgba(255, 215, 0, 0.2);
+      transform: scale(1.2);
+    }
 
     .music-play-btn {
       position: absolute;
@@ -105,16 +118,18 @@
       Your browser does not support the video tag.
     </video>
 
-    <div id="timer"></div>
+    <!-- 👇 Fade-in added -->
+    <div id="timer" class="fade-in"></div>
 
-    <!-- Only icon for map location -->
-    <div class="map-wrapper">
+    <!-- 👇 Fade-in added -->
+    <div class="map-wrapper fade-in">
       <a class="map-link" href="https://maps.app.goo.gl/rv9pDW3tj69biWkf8?g_st=aw" target="_blank">
         <i class="fas fa-map-marker-alt"></i>
       </a>
     </div>
 
-    <button class="music-play-btn" id="playMusicBtn">
+    <!-- 👇 Fade-in added -->
+    <button class="music-play-btn fade-in" id="playMusicBtn">
       <i class="fas fa-music"></i>
     </button>
 
