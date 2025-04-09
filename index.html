@@ -43,8 +43,8 @@
     /* Fade-in animation */
     .fade-in {
       opacity: 0;
-      animation: fadeIn 2s ease-in-out forwards;
-      animation-delay: 1s;
+      animation: fadeIn 1.2s ease-in-out forwards;
+      animation-delay: 0.5s;
     }
 
     @keyframes fadeIn {
@@ -147,11 +147,11 @@
       if (bgMusic.paused) {
         bgMusic.play();
         playMusicBtn.style.display = "none";
-        document.body.removeEventListener('click', playMusicOnce);
+        document.body.removeEventListener('pointerdown', playMusicOnce);
       }
     }
 
-    document.body.addEventListener('click', playMusicOnce);
+    document.body.addEventListener('pointerdown', playMusicOnce);
 
     function updateTimer() {
       const countDownDate = new Date("May 1, 2025 12:40:00").getTime();
