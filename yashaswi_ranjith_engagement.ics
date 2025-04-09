@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SrujanKulal//EngagementInvite//EN
+BEGIN:VEVENT
+UID:1746103200.0@srujkulal.github.io
+DTSTAMP:20250409T055041Z
+DTSTART:20250501T124000
+DTEND:20250501T144000
+SUMMARY:Yashaswi & Ranjith Engagement
+DESCRIPTION:Join us for the engagement celebration of Yashaswi & Ranjith!
+LOCATION:https://maps.app.goo.gl/rv9pDW3tj69biWkf8?g_st=aw
+END:VEVENT
+END:VCALENDAR
