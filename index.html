@@ -119,7 +119,8 @@
     </video>
 
     <!-- 👇 Fade-in added -->
-    <div id="timer" class="fade-in"></div>
+    <a id="timer" class="fade-in" target="_blank"></a>
+
 
     <!-- 👇 Fade-in added -->
     <div class="map-wrapper fade-in">
@@ -174,6 +175,11 @@
 
     updateTimer();
     setInterval(updateTimer, 1000);
+
+    // 👇 Add calendar link to timer
+    const timer = document.getElementById('timer');
+    const calendarLink ='https://calendar.google.com/calendar/render?action=TEMPLATE&text=Yashaswi+%26+Ranjith+Engagement&dates=20250501T071000Z/20250501T090000Z&details=Join+us+on+May+1+at+12:40+PM!&location=https://maps.app.goo.gl/rv9pDW3tj69biWkf8?g_st=aw';
+    timer.setAttribute('href', calendarLink);
   </script>
 </body>
 </html>
