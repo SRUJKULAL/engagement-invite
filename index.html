@@ -67,6 +67,31 @@
       box-shadow: 0 0 8px #FFD700;
     }
 
+    .map-wrapper {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .map-link {
+      font-size: 15px;
+      color: #FFD700;
+      text-decoration: none;
+      padding: 6px;
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, color 0.3s ease;
+      box-shadow: 0 0 8px #FFD700;
+    }
+
+    .map-link:hover {
+      color: white;
+      background-color: rgba(255, 215, 0, 0.2);
+      transform: scale(1.1);
+    }
+
     .music-play-btn {
       position: absolute;
       bottom: 10px;
@@ -156,6 +181,13 @@
       <!-- Timer Box (clickable) -->
       <div id="timer" class="fade-in" onclick="handleCalendarClick()" title="Click to add to calendar"></div>
 
+      <!-- Map Link -->
+      <div class="map-wrapper fade-in">
+        <a class="map-link" href="https://maps.app.goo.gl/rv9pDW3tj69biWkf8" target="_blank">
+          <i class="fas fa-map-marker-alt"></i>
+        </a>
+      </div>
+
       <!-- Music Play Button -->
       <button class="music-play-btn fade-in" id="playMusicBtn">
         <i class="fas fa-music"></i>
@@ -174,7 +206,7 @@
       <div class="gallery">
         <img src="https://SRUJKULAL.github.io/engagement-invite/media/photo1.jpg" alt="Event Photo 1">
         <img src="https://SRUJKULAL.github.io/engagement-invite/media/photo2.jpg" alt="Event Photo 2">
-        <video controls>
+        <video controls preload="auto">
           <source src="https://SRUJKULAL.github.io/engagement-invite/media/video.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -188,15 +220,16 @@
     const bgMusic = document.getElementById('bgMusic');
     const invitationDiv = document.getElementById('invitation');
     const postEventDiv = document.getElementById('post-event');
-    const countDownDate = new Date("May 1, 2025 12:40:00").getTime();
+    const eventDate = new Date("May 1, 2025 12:40:00").getTime(); // Event start time
+    const postEventSwitchDate = new Date("May 1, 2025 17:40:00").getTime(); // 5 hours after event (12:40 PM + 5 hours = 5:40 PM)
     const now = new Date().getTime();
 
-    if (now > countDownDate) {
-      // Event has passed, show thank you message and gallery
+    if (now > postEventSwitchDate) {
+      // After 5 hours post-event, show thank you message and gallery
       postEventDiv.classList.remove('hidden');
       invitationDiv.classList.add('hidden');
     } else {
-      // Event is upcoming, show invitation and run timer
+      // Before 5 hours post-event, show invitation and run timer
       function playMusicOnce() {
         if (bgMusic.paused) {
           bgMusic.play();
@@ -209,9 +242,10 @@
 
       function updateTimer() {
         const now = new Date().getTime();
-        const distance = countDownDate - now;
+        const distance = eventDate - now;
 
         if (distance < 0) {
+          // Event has started, but still within 5 hours
           document.getElementById("timer").innerHTML = "Event Started!";
           return;
         }
