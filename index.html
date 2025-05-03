@@ -7,9 +7,9 @@
   <!-- Social media preview -->
   <meta property="og:title" content="Yashaswi & Ranjith Engagement" />
   <meta property="og:description" content="Thank you for celebrating with us on May 1, 2025!" />
-  <meta property="og:image" content="https://srujkulal.github.io/engagement-invite/thumbnail.jpg" />
+  <meta property="og:image" content="https://SRUJKULAL.github.io/engagement-invite/thumbnail.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://srujkulal.github.io/engagement-invite/" />
+  <meta property="og:url" content="https://SRUJKULAL.github.io/engagement-invite/" />
 
   <title>Yashaswi & Ranjith Engagement</title>
 
@@ -122,21 +122,26 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
       width: 100%;
       max-height: 60vh;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      padding-bottom: 20px;
     }
 
     .gallery img,
     .gallery video {
-      width: 90%;
-      max-width: 400px;
+      width: 95%;
+      max-width: 450px;
       height: auto;
       object-fit: contain;
       border-radius: 8px;
       box-shadow: 0 0 8px #FFD700;
+    }
+
+    .gallery video {
+      background: #000;
     }
   </style>
 </head>
@@ -144,7 +149,7 @@
   <div class="container">
     <div id="invitation">
       <video id="engagementVideo" autoplay muted loop playsinline>
-        <source src="https://srujkulal.github.io/engagement-invite/Yashaswi_eng.mp4" type="video/mp4" />
+        <source src="https://SRUJKULAL.github.io/engagement-invite/Yashaswi_eng.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -158,7 +163,7 @@
 
       <!-- Music -->
       <audio id="bgMusic" loop>
-        <source src="https://srujkulal.github.io/engagement-invite/music.mp3" type="audio/mpeg" />
+        <source src="https://SRUJKULAL.github.io/engagement-invite/music.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -167,10 +172,10 @@
       <h1>Thank You for Celebrating With Us!</h1>
       <p>We are immensely grateful to everyone who joined us for Yashaswi & Ranjith's engagement on May 1, 2025. Relive the beautiful moments below!</p>
       <div class="gallery">
-        <img src="https://srujkulal.github.io/engagement-invite/media/photo1.jpg" alt="Event Photo 1">
-        <img src="https://srujkulal.github.io/engagement-invite/media/photo2.jpg" alt="Event Photo 2">
+        <img src="https://SRUJKULAL.github.io/engagement-invite/media/photo1.jpg" alt="Event Photo 1">
+        <img src="https://SRUJKULAL.github.io/engagement-invite/media/photo2.jpg" alt="Event Photo 2">
         <video controls>
-          <source src="https://srujkulal.github.io/engagement-invite/media/video.mp4" type="video/mp4">
+          <source src="https://SRUJKULAL.github.io/engagement-invite/media/video.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
@@ -229,12 +234,13 @@
       const isAndroid = /Android/.test(navigator.userAgent);
 
       if (isIOS) {
-        window.location.href = "https://srujkulal.github.io/engagement-invite/yashaswi_ranjith_engagement.ics";
+        window.location.href = "https://SRUJKULAL.github.io/engagement-invite/yashaswi_ranjith_engagement.ics";
       } else {
         const googleCalendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Yashaswi+%26+Ranjith+Engagement&dates=20250501T071000Z/20250501T083000Z&details=Join+us+on+May+1,+2025,+at+12:40+PM!&location=Honne%20Katte%2C%20Kulai%2C%20Mangaluru%2C%20Karnataka%20575011&sf=true&output=xml";
         window.open(googleCalendarUrl, "_blank");
       }
     }
   </script>
-</body>
+</head>
+<body>
 </html>
